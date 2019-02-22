@@ -1,0 +1,27 @@
+{
+  "name": "reed-mock-server",
+  "version": "1.0.0",
+  "description": "node.js mock server",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "mock",
+    "server"
+  ],
+  "author": "HansHuang",
+  "license": "MIT",
+  "devDependencies": {
+    "mocha": "^5.2.0",
+    "supertest": "^3.4.2"
+  },
+  "dependencies": {
+    "dummy-json": "^2.0.0",
+    "koa": "^2.7.0",
+    "koa-body": "^4.0.8",
+    "koa-router": "^7.4.0",
+    "koa-send": "^5.0.0",
+    "liveconfig": "^2.0.2"
+  }
+}
