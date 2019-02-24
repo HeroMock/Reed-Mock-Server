@@ -17,13 +17,13 @@ const httpPort = Number(process.env.PORT || Config.port)
  * @return {http.Server}
  */
 function startServer() {
-
     const app = new Koa()
     setupMiddleware(app)
 
     const server = app.listen(httpPort)
     server.on('listening', onListening)
     server.on('error', onError)
+    // server.on('close', () => process.exit(0))
 
     return server
 }
