@@ -1,9 +1,19 @@
 {
     "port": "3000",
     "serveStatic": {
-        "enabled": "true"
+        "enabled": true,
+        "urlPrefix": "public",
+        "indexPage": [
+            "index.html",
+            "index.htm"
+        ],
+        "path": ""
+    },
+    "serveRestApi": {
+        "enabled": true,
+        "urlPrefix": "api"
     },
     "serveWebsocket": {
-        "enabled": "true"
+        "enabled": true
     }
 }
