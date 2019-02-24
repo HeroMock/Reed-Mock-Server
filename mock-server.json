@@ -9,9 +9,10 @@
         ],
         "path": ""
     },
-    "serveRestApi": {
+    "serveJsonApi": {
         "enabled": true,
-        "urlPrefix": "api"
+        "urlPrefix": "api",
+        "path": ""
     },
     "serveWebsocket": {
         "enabled": true
