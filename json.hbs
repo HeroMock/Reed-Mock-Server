@@ -1,0 +1,29 @@
+{
+    "users": [
+        {{#repeat 100}}
+        {
+            "id": {{@index}},
+            "name": "{{firstName}} {{lastName}}",
+            "company": "{{company}}",
+            "email": "{{email}}",
+            "dob": "{{date '1900' '2000' 'YYYYMMDD'}}",
+            "address": "{{int 10 1000}} {{street}}",
+            "city": "{{city}}",
+            "optedin": {{boolean}},
+            "avatar": "{{@index}}.png",
+            "cellphone": "{{phone "+86 xxx xxxx xxxx"}}"
+        }
+        {{/repeat}}
+    ],
+    "feedbacks": [
+        {{#repeat 500}}
+        {
+            "id": {{@index}},
+            "comment": "{{lorem 100}}",
+            "userId": {{int 0 100}},
+            "timestamp": "{{date '2010' '2015' 'YYYYMMDD'}} {{time '06:00' '22:00' 'hh:mm:ss'}}"
+        }
+        {{/repeat}}
+    ],
+    "profile": { "enableComment": {{boolean}} }
+}

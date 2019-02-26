@@ -7,12 +7,12 @@
             "index.html",
             "index.htm"
         ],
-        "path": ""
+        "dirPath": ""
     },
     "serveJsonApi": {
         "enabled": true,
         "urlPrefix": "api",
-        "path": ""
+        "filePath": "./json.hbs"
     },
     "serveWebsocket": {
         "enabled": true
