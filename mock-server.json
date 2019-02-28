@@ -11,7 +11,7 @@
     },
     "serveJsonApi": {
         "enabled": true,
-        "urlPrefix": "api",
+        "urlPrefix": "/api",
         "filePath": "./json.hbs"
     },
     "serveWebsocket": {
