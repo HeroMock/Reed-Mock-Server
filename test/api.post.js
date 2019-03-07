@@ -23,7 +23,7 @@ describe('HTTP server is working', () => {
     it('POST with non-object body', () => {
         return request(server)
             .post('/api/whatever/')
-            .send('hello')
+            .send(false)
             .expect('Content-Type', /json/)
             .expect(400)
     })
@@ -37,11 +37,24 @@ describe('HTTP server is working', () => {
     })
 
     it('POST /api/ with object (single key)', () => {
-
+        return request(server)
+            .post('/api/')
+            .send({ feedbacks: { comment: 'great', userId: 55, timestamp: '20190707 09:23:23' } })
+            .expect('Content-Type', /json/)
+            .expect(201)
+        // .get('/api/feedbacks/500')
+        // .expect(200)
+        // .then(res => {
+        //     assert(typeof res.body.comment, 'great')
+        // })
     })
 
     it('POST /api/:name with object (no single key)', () => {
-
+        return request(server)
+            .post('/api/feedbacks')
+            .send({ comment: 'great', userId: 55, timestamp: '20190707 09:23:23' })
+            .expect('Content-Type', /json/)
+            .expect(201)
     })
 
     it('POST /api/ with array', () => {
@@ -53,7 +66,14 @@ describe('HTTP server is working', () => {
     })
 
     it('POST /api/:name with array', () => {
-
+        return request(server)
+            .post('/api/feedbacks')
+            .send([
+                { comment: 'great', userId: 55, timestamp: '20190707 09:23:23' },
+                { comment: 'like it', userId: 90, timestamp: '20191028 15:14:03' }
+            ])
+            .expect('Content-Type', /json/)
+            .expect(201)
     })
 
     after(async () => {
