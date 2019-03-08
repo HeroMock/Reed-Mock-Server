@@ -5,7 +5,7 @@ process.env.NODE_ENV = 'test'
 
 const app = require('../index')
 
-describe('API Get', () => {
+describe('Restful API GET', () => {
     let server;
 
     before(() => {
