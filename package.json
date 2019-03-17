@@ -10,6 +10,10 @@
     "mock",
     "server"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/HansHuang/Reed-Mock-Server.git"
+  },
   "author": "HansHuang",
   "license": "MIT",
   "devDependencies": {
