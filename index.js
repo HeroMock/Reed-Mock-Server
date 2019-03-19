@@ -57,7 +57,6 @@ function onListening() {
     console.info(msg)
 }
 
-console.log(module.parent)
 if (!module.parent) startServer()
 
 exports.startServer = startServer
