@@ -8,7 +8,7 @@ const app = require('../index')
 describe('Restful API GET', () => {
     let server;
 
-    beforeEach(() => {
+    before(() => {
         server = app.startServer()
     })
 
@@ -50,7 +50,7 @@ describe('Restful API GET', () => {
             .expect(404)
     })
 
-    beforeEach(async () => {
+    before(async () => {
         await server.close()
     })
 })
