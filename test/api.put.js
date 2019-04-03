@@ -45,7 +45,7 @@ describe('Restful API PUT', () => {
             .expect(404)
     })
 
-    it('PUT /api/:entity/ (single resource)', () => {
+    it('PUT /api/:entity/ (single resource)', async () => {
         const res = await request(server)
             .put('/api/profile')
             .send({ defaultTimezone: 'UTC+8' })
@@ -60,7 +60,7 @@ describe('Restful API PUT', () => {
         assert.strictEqual('UTC+8', res2.body.defaultTimezone);
     })
 
-    it('PUT /api/:entity/ (plural resource) with id in body', () => {
+    it('PUT /api/:entity/ (plural resource) with id in body', async () => {
         const res0 = await request(server).get('/api/users/5')
         assert.notStrictEqual('Hans Huang', res0.body.name)
         assert.strictEqual('string', typeof res0.body.email)
@@ -80,7 +80,7 @@ describe('Restful API PUT', () => {
         assert.strictEqual('Hans Huang', res2.body.name)
     })
 
-    it('PUT /api/:entity/ (plural resource) with array body', () => {
+    it('PUT /api/:entity/ (plural resource) with array body', async () => {
         const res = await request(server)
             .put('/api/users')
             .send([{ id: 10, name: 'Hans' }, { id: 20, name: 'Huang' }])
@@ -94,7 +94,7 @@ describe('Restful API PUT', () => {
         assert.notStrictEqual('Hans', res2.body.name)
     })
 
-    it('PUT /api/:entity/:id (plural resource)', () => {
+    it('PUT /api/:entity/:id (plural resource)', async () => {
         const res = await request(server)
             .put('/api/users/30')
             .send({ name: 'Hans Huang', job: 'coder' })
