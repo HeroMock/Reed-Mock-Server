@@ -12,7 +12,7 @@ describe('Restful API PATCH', () => {
         server = app.startServer()
     })
 
-    it('PATCH with empty body', () => {
+    it('1. PATCH with empty body', () => {
         return request(server)
             .patch('/api/')
             .send({})
@@ -20,7 +20,7 @@ describe('Restful API PATCH', () => {
             .expect(400)
     })
 
-    it('PATCH with non-object body', () => {
+    it('2. PATCH with non-object body', () => {
         return request(server)
             .patch('/api/whatever/')
             .send(false)
@@ -28,7 +28,7 @@ describe('Restful API PATCH', () => {
             .expect(400)
     })
 
-    it('PATCH with non-existed entity', () => {
+    it('3. PATCH with non-existed entity', () => {
         return request(server)
             .patch('/api/users/1000')
             .send({ name: 'hans' })
@@ -36,7 +36,7 @@ describe('Restful API PATCH', () => {
             .expect(404)
     })
 
-    it('PATCH /api/:entity/ (plural resource) without id in body', () => {
+    it('4. PATCH /api/:entity/ (plural resource) without id in body', () => {
         return request(server)
             .patch('/api/feedbacks')
             .send({ comment: 'great', userId: 55, timestamp: '20190707 09:23:23' })
@@ -44,7 +44,7 @@ describe('Restful API PATCH', () => {
             .expect(404)
     })
 
-    it('PATCH /api/:entity/ (single resource)', async () => {
+    it('5. PATCH /api/:entity/ (single resource)', async () => {
         const res = await request(server)
             .patch('/api/profile')
             .send({ defaultTimezone: 'UTC+8' })
@@ -59,7 +59,7 @@ describe('Restful API PATCH', () => {
         assert.strictEqual('UTC+8', res2.body.defaultTimezone);
     })
 
-    it('PATCH /api/:entity/ (plural resource) with id in body', async () => {
+    it('6. PATCH /api/:entity/ (plural resource) with id in body', async () => {
         const res0 = await request(server).get('/api/users/5')
         assert.notStrictEqual('Hans Huang', res0.body.name)
 
@@ -76,7 +76,7 @@ describe('Restful API PATCH', () => {
         assert.strictEqual('Hans Huang', res2.body.name)
     })
 
-    it('PATCH /api/:entity/ (plural resource) with array body', async () => {
+    it('7. PATCH /api/:entity/ (plural resource) with array body', async () => {
         const res = await request(server)
             .patch('/api/users')
             .send([{ id: 10, name: 'Hans' }, { id: 20, name: 'Huang' }])
@@ -90,7 +90,7 @@ describe('Restful API PATCH', () => {
         assert.notStrictEqual('Hans', res2.body.name)
     })
 
-    it('PATCH /api/:entity/:id (plural resource)', async () => {
+    it('8. PATCH /api/:entity/:id (plural resource)', async () => {
         const res = await request(server)
             .patch('/api/users/30')
             .send({ name: 'Hans Huang', job: 'coder' })
@@ -100,13 +100,13 @@ describe('Restful API PATCH', () => {
         assert.strictEqual('coder', res.body.job)
 
         const res2 = await request(server)
-            .get('/api/users/5')
+            .get('/api/users/30')
             .expect(200)
         assert.strictEqual('Hans Huang', res2.body.name)
         assert.strictEqual('coder', res2.body.job)
     })
 
-    it('PATCH /api/:entity/:id (single resource)', async () => {
+    it('9. PATCH /api/:entity/:id (single resource)', async () => {
         return request(server)
             .patch('/api/profile/5')
             .send({ defaultTimezone: 'UTC+8' })
