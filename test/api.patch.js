@@ -87,7 +87,7 @@ describe('Restful API PATCH', () => {
         const res2 = await request(server)
             .get('/api/users/10')
             .expect(200)
-        assert.notStrictEqual('Hans', res2.body.name)
+        assert.strictEqual('Hans', res2.body.name)
     })
 
     it('8. PATCH /api/:entity/:id (plural resource)', async () => {
