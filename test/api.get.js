@@ -12,42 +12,53 @@ describe('Restful API GET', () => {
         server = app.startServer()
     })
 
-    it('GET /api/:name responds single object', () => {
+    it('1. GET /api/:name responds single object', () => {
         return request(server)
             .get('/api/profile')
             .expect('Content-Type', /json/)
             .expect(200)
             .then(res => {
-                assert(typeof res.body.enableComment, 'boolean')
+                assert.strictEqual(typeof res.body.enableComment, 'boolean')
             })
     })
 
-    it('GET /api/:name/:id', () => {
+    it('2. GET /api/:name/:id', () => {
         return request(server)
             .get('/api/users/1')
             .expect('Content-Type', /json/)
             .expect(200)
             .then(res => {
-                assert(typeof res.body, 'object')
+                assert.strictEqual(typeof res.body, 'object')
             })
     })
 
-    it('GET /api/:name responds array', () => {
+    it('3. GET /api/:name responds array', () => {
         return request(server)
             .get('/api/users/')
             .expect('Content-Type', /json/)
             .expect(200)
             .then(res => {
-                assert(typeof res.body, 'array')
+                assert.strictEqual(100, res.body.length)
             })
     })
 
-    it('GET /api/:name responds 404 with json', () => {
+    it('4. GET /api/:name responds 404 with json', () => {
         return request(server)
             .get('/api/no_existed/')
             .set('Accept', 'application/json')
             .expect('Content-Type', /json/)
             .expect(404)
+    })
+
+    it('5. GET /api/:name with pagination', async () => {
+        const res = await request(server)
+            .get('/api/users?_page=1&_size=20')
+            .expect('Content-Type', /json/)
+            .expect(200);
+
+        assert.strictEqual(20, res.body.length)
+        assert.strictEqual(5, res.body[5].id)
+        assert.strictEqual(100, Number(res.get('X-Total-Count')))
     })
 
     before(async () => {
