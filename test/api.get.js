@@ -38,7 +38,7 @@ describe('Restful API GET', () => {
             .expect('Content-Type', /json/)
             .expect(200)
             .then(res => {
-                assert.strictEqual(100, res.body.length)
+                assert.strictEqual(res.body.length, 100)
             })
     })
 
@@ -50,15 +50,25 @@ describe('Restful API GET', () => {
             .expect(404)
     })
 
-    it('5. GET /api/:name with pagination', async () => {
+    it('5. GET /api/:name with filter', async () => {
+        const res = await request(server)
+            .get('/api/users?optedin=true&name.length=12')
+            .expect('Content-Type', /json/)
+            .expect(200)
+
+        assert.strictEqual(res.body.filter(s => !s.optedin).length, 0)
+        assert.strictEqual(res.body.filter(s => s.name.length == 12).length, res.body.length)
+    })
+
+    it('6. GET /api/:name with pagination', async () => {
         const res = await request(server)
             .get('/api/users?_page=1&_size=20')
             .expect('Content-Type', /json/)
             .expect(200);
 
-        assert.strictEqual(20, res.body.length)
-        assert.strictEqual(5, res.body[5].id)
-        assert.strictEqual(100, Number(res.get('X-Total-Count')))
+        assert.strictEqual(res.body.length, 20)
+        assert.strictEqual(res.body[5].id, 5)
+        assert.strictEqual(Number(res.get('X-Total-Count')), 100)
     })
 
     before(async () => {
