@@ -56,7 +56,7 @@ describe('Restful API GET', () => {
             .expect('Content-Type', /json/)
             .expect(200)
 
-        assert.strictEqual(res.body.filter(s => !s.optedin).length, 0)
+        assert.strictEqual(res.body.filter(s => s.optedin === false).length, 0)
         assert.strictEqual(res.body.filter(s => s.name.length == 12).length, res.body.length)
     })
 
