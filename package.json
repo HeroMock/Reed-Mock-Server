@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "node.js mock server",
   "main": "index.js",
+  "bin": {
+    "reed-mock": "./cli/index.js"
+  },
   "scripts": {
     "test": "mocha"
   },
@@ -21,6 +24,7 @@
     "supertest": "^3.4.2"
   },
   "dependencies": {
+    "commander": "^2.20.0",
     "dummy-json": "^2.0.0",
     "koa": "^2.7.0",
     "koa-body": "^4.0.8",

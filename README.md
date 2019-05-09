@@ -1,2 +1,5 @@
-# Reed-Mock-Server
-Mock Server for restful API, websocket, static files
+# Reed Mock Server
+1. Restful API Mock
+2. Existing API Transparent Proxy
+3. Websocket Mock
+4. Static File Service
