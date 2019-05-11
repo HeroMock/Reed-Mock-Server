@@ -9,10 +9,10 @@
         ],
         "dirPath": "./static"
     },
-    "serveJsonApi": {
+    "serveApi": {
         "enabled": true,
         "urlPrefix": "/api",
-        "filePath": "./json.hbs"
+        "filePath": "./mock-api.hbs"
     },
     "serveWebsocket": {
         "enabled": true
