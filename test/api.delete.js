@@ -12,21 +12,21 @@ describe('Restful API DELETE', () => {
         server = app.startServer()
     })
     
-    it('DELETE with non-existed entity', () => {
+    it('1. DELETE with non-existed entity', () => {
         return request(server)
             .delete('/api/some-entity')
             .expect('Content-Type', /json/)
             .expect(404)
     })
 
-    it('DELETE with non-existed ID', () => {
+    it('2. DELETE with non-existed ID', () => {
         return request(server)
             .delete('/api/users/1000')
             .expect('Content-Type', /json/)
             .expect(404)
     })
 
-    it('DELETE /api/:entity/', async () => {
+    it('3. DELETE /api/:entity/', async () => {
         await request(server)
             .delete('/api/profile')
             .expect('Content-Type', /json/)
@@ -36,7 +36,7 @@ describe('Restful API DELETE', () => {
             .expect(404)
     })
 
-    it('DELETE /api/:entity/:id', async () => {
+    it('4. DELETE /api/:entity/:id', async () => {
         await request(server)
             .delete('/api/users/1')
             .expect('Content-Type', /json/)
@@ -46,7 +46,7 @@ describe('Restful API DELETE', () => {
             .expect(404)
     })
 
-    it('DELETE /api/:entity?id=1,2,3', async () => {
+    it('5. DELETE /api/:entity?id=1,2,3', async () => {
         await request(server)
             .delete('/api/feedbacks?id=1,2,3')
             .expect('Content-Type', /json/)
