@@ -12,7 +12,7 @@
     "serveApi": {
         "enabled": true,
         "urlPrefix": "/api",
-        "filePath": "./mock-api.hbs"
+        "filePath": "./json-api.hbs"
     },
     "serveWebsocket": {
         "enabled": true

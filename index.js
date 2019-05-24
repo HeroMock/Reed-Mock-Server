@@ -53,7 +53,7 @@ function onError(error) {
 function onListening() {
     if (process.env.NODE_ENV != 'development') return;
 
-    let msg = `Listening on port: ${httpPort}, node environment: ${process.env.NODE_ENV}`
+    let msg = `Mock server listening on port: ${httpPort}, node environment: ${process.env.NODE_ENV}`
     console.info(msg)
 }
 

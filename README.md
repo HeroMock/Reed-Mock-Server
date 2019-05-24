@@ -3,3 +3,15 @@
 2. Existing API Transparent Proxy
 3. Websocket Mock
 4. Static File Service
+
+
+# How to use
+
+```sh
+npm i -D reed-mock-server
+
+reed-mock init
+
+# after customized the 'mock-server.json', 'json-api.hbs'
+reed-mock start
+```
