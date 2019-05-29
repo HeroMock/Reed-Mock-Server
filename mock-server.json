@@ -16,5 +16,14 @@
     },
     "serveWebsocket": {
         "enabled": true
+    },
+    "serveProxy": {
+        "enabled": true,
+        "endpoints": [
+            {
+                "endpoint": "/otherApi",
+                "target": ""
+            }
+        ]
     }
 }
