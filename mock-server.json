@@ -17,11 +17,15 @@
     "serveWebsocket": {
         "enabled": true
     },
-    "serveProxy": {
+    "serveProxy": { 
         "enabled": true,
         "endpoints": [
             {
-                "endpoint": "/otherApi",
+                "endpoint": "/proxy-foo",
+                "target": "https://httpbin.org/get"
+            },
+            {
+                "endpoint": "/proxy-bar",
                 "target": ""
             }
         ]
