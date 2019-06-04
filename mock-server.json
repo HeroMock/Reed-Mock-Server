@@ -7,7 +7,14 @@
             "index.html",
             "index.htm"
         ],
-        "dirPath": "./static"
+        "dirPath": "./static",
+        "options": {
+            "extensions": [
+                "js",
+                "css",
+                "png"
+            ]
+        }
     },
     "serveApi": {
         "enabled": true,
@@ -17,7 +24,7 @@
     "serveWebsocket": {
         "enabled": true
     },
-    "serveProxy": { 
+    "serveProxy": {
         "enabled": true,
         "endpoints": [
             {
@@ -26,8 +33,10 @@
             },
             {
                 "endpoint": "/proxy-bar",
-                "target": ""
+                "target": "",
+                "options": {}
             }
-        ]
+        ],
+        "options": {}
     }
 }
