@@ -7,7 +7,9 @@
     "reed-mock": "./cli/index.js"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "eslint": "eslint . --fix",
+    "dev": "node index.js"
   },
   "keywords": [
     "mock",

@@ -1,12 +1,11 @@
-const request = require('supertest'),
-    assert = require('assert')
+const request = require('supertest')
 
 process.env.NODE_ENV = 'test'
 
 const app = require('../index')
 
 describe('Restful API DELETE', () => {
-    let server;
+    let server
 
     beforeEach(() => {
         server = app.startServer()

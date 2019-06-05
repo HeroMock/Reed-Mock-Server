@@ -6,7 +6,7 @@ process.env.NODE_ENV = 'test'
 const app = require('../index')
 
 describe('Restful API PATCH', () => {
-    let server;
+    let server
 
     before(() => {
         server = app.startServer()
@@ -56,7 +56,7 @@ describe('Restful API PATCH', () => {
         const res2 = await request(server)
             .get('/api/profile')
             .expect(200)
-        assert.strictEqual('UTC+8', res2.body.defaultTimezone);
+        assert.strictEqual('UTC+8', res2.body.defaultTimezone)
     })
 
     it('6. PATCH /api/:entity/ (plural resource) with id in body', async () => {

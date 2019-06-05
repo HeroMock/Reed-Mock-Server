@@ -6,7 +6,7 @@ process.env.NODE_ENV = 'test'
 const app = require('../index')
 
 describe('Static HTTP Server', () => {
-    let server;
+    let server
 
     beforeEach(() => {
         server = app.startServer()

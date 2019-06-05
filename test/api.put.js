@@ -6,7 +6,7 @@ process.env.NODE_ENV = 'test'
 const app = require('../index')
 
 describe('Restful API PUT', () => {
-    let server;
+    let server
 
     before(() => {
         server = app.startServer()
@@ -57,7 +57,7 @@ describe('Restful API PUT', () => {
         const res2 = await request(server)
             .get('/api/profile')
             .expect(200)
-        assert.strictEqual('UTC+8', res2.body.defaultTimezone);
+        assert.strictEqual('UTC+8', res2.body.defaultTimezone)
     })
 
     it('6. PUT /api/:entity/ (plural resource) with id in body', async () => {

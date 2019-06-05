@@ -5,7 +5,7 @@
 4. Static File Service
 
 
-# How to use
+## How to use
 
 ```sh
 npm i -D reed-mock-server
@@ -17,7 +17,10 @@ reed-mock start
 ```
 
 
-# More custom options
-1. Static Server is served by [koa-send](https://github.com/koajs/send), more options could be found [here](https://github.com/koajs/send#options).
+## More custom options
 
-2. API proxy is powered by [http-proxy](https://github.com/nodejitsu/node-http-proxy), more options could be found [here](https://github.com/nodejitsu/node-http-proxy#options).
+1. API proxy is powered by [http-proxy](https://github.com/nodejitsu/node-http-proxy), more options could be found [here](https://github.com/nodejitsu/node-http-proxy#options).
+
+## TODO
+
+1. Add Cache control for static file serve

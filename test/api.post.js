@@ -6,7 +6,7 @@ process.env.NODE_ENV = 'test'
 const app = require('../index')
 
 describe('Restful API POST', () => {
-    let server;
+    let server
 
     before(() => {
         server = app.startServer()

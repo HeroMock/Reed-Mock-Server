@@ -7,14 +7,7 @@
             "index.html",
             "index.htm"
         ],
-        "dirPath": "./static",
-        "options": {
-            "extensions": [
-                "js",
-                "css",
-                "png"
-            ]
-        }
+        "dirPath": "./static"
     },
     "serveApi": {
         "enabled": true,

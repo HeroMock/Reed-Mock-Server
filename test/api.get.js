@@ -6,7 +6,7 @@ process.env.NODE_ENV = 'test'
 const app = require('../index')
 
 describe('Restful API GET', () => {
-    let server;
+    let server
 
     before(() => {
         server = app.startServer()
@@ -65,7 +65,7 @@ describe('Restful API GET', () => {
         const res = await request(server)
             .get('/api/users?_page=1&_size=20')
             .expect('Content-Type', /json/)
-            .expect(200);
+            .expect(200)
 
         assert.strictEqual(res.body.length, 20)
         assert.strictEqual(res.body[5].id, 5)

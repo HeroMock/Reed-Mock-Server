@@ -1,12 +1,11 @@
-const request = require('supertest'),
-    assert = require('assert')
+const request = require('supertest')
 
 process.env.NODE_ENV = 'test'
 
 const app = require('../index')
 
 describe('HTTP Transparent Proxy', () => {
-    let server;
+    let server
 
     before(() => {
         server = app.startServer()
@@ -15,7 +14,7 @@ describe('HTTP Transparent Proxy', () => {
     it('index page responds 200 ', done => {
         request(server)
             .get('/proxy-foo')
-            .expect(200, done);
+            .expect(200, done)
     })
 
     after(async () => {

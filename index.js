@@ -1,5 +1,4 @@
-const http = require('http'),
-    Koa = require('koa'),
+const Koa = require('koa'),
     setupMiddleware = require('./lib/middleware'),
     Config = require('./lib/config')
 
@@ -32,26 +31,26 @@ function startServer() {
  * @param {Error} error
  */
 function onError(error) {
-    if (error.syscall !== "listen") {
-        throw error;
+    if (error.syscall !== 'listen') {
+        throw error
     }
 
     switch (error.code) {
-        case "EACCES":
-            console.error(`Port ${httpPort} requires elevated privileges`);
-            process.exit(1);
-            break;
-        case "EADDRINUSE":
-            console.error(`Port ${httpPort} is already in use`);
-            process.exit(1);
-            break;
+        case 'EACCES':
+            console.error(`Port ${httpPort} requires elevated privileges`)
+            process.exit(1)
+            break
+        case 'EADDRINUSE':
+            console.error(`Port ${httpPort} is already in use`)
+            process.exit(1)
+            break
         default:
-            throw error;
+            throw error
     }
 }
 
 function onListening() {
-    if (process.env.NODE_ENV != 'development') return;
+    if (process.env.NODE_ENV != 'development') return
 
     let msg = `Mock server listening on port: ${httpPort}, node environment: ${process.env.NODE_ENV}`
     console.info(msg)
