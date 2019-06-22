@@ -46,7 +46,7 @@ describe('Restful API GET', () => {
         return request(server)
             .get('/api/no_existed/')
             .set('Accept', 'application/json')
-            .expect('Content-Type', /json/)
+            // .expect('Content-Type', /json/)
             .expect(404)
     })
 
@@ -84,12 +84,12 @@ describe('Restful API GET', () => {
 
     it('8. GET /api/:name with pagination & sort', async () => {
         const res = await request(server)
-            .get('/api/feedbacks?&_page=1&_sort=userId&_order=desc')
+            .get('/api/feedbacks?&_page=1&_size=20&_sort=userId&_order=desc')
             .expect('Content-Type', /json/)
             .expect(200)
 
-        assert.strictEqual(res.body.length, 10)
-        assert.strictEqual(res.body[0].userId > res.body[9].userId, true)
+        assert.strictEqual(res.body.length, 20)
+        assert.strictEqual(res.body[0].userId > res.body[19].userId, true)
     })
 
     before(async () => {
