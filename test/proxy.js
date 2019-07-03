@@ -27,10 +27,10 @@ describe('HTTP Transparent Proxy', () => {
         remoteServer.close()
     })
 
-    it('Proxy Get', done => {
-        request(server)
+    it('Proxy Get', async () => {
+        await request(server)
             .get('/proxy-foo/')
-            .expect(200, done)
+            .expect(200)
     })
 
     after(async () => {
