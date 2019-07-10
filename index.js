@@ -20,6 +20,7 @@ function startServer() {
     setupMiddleware(app)
 
     const server = app.listen(httpPort)
+    server.timeout = 5 * 60 * 1000
     server.on('listening', onListening)
     server.on('error', onError)
     // server.on('close', () => process.exit(0))
