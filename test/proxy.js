@@ -13,34 +13,49 @@ describe('HTTP Transparent Proxy', () => {
         server = app.startServer()
     })
 
-    // beforeEach('start another server', () => {
-    //     remoteReq = new Promise(resolve => {
-    //         remoteServer = http.createServer((req, res) => {
-    //             res.writeHead(200, { 'Content-Type': 'text/plain' })
-    //             res.write('request successfully proxied!' + '\n' + JSON.stringify(req.headers, true, 2))
-    //             res.end()
-    //             resolve(req)
-    //         }).listen(4000)
-    //     })
-    // })
+    beforeEach('start another server', () => {
+        remoteServer = app.startServer(2999)
+    })
 
-    // afterEach('stop remove server', () => {
-    //     remoteServer.close()
-    // })
+    afterEach('stop remove server', () => {
+        remoteServer.close()
+    })
 
-    it('Proxy Get', async () => {
+    it('1. Proxy Get', async () => {
         await request(server)
-            .get('/proxy-get/')
+            .get('/proxy-foo/users/')
             .expect(200)
     })
 
-    it('Proxy Get with query', async () => {
+    it('2. Proxy Get with query & parameter', async () => {
         const res =  await request(server)
-            .get('/proxy-get?foo=bar')
+            .get('/proxy-foo/users?_page=1&_size=20')
             .expect(200)
         
-        assert.strictEqual(res.body.args.foo, 'bar')
+        assert.strictEqual(res.body.length, 20)
     })
+
+
+    it('3. Proxy PATCH ', async () => {
+        const res0 = await request(server)
+            .get('/proxy-bar/api/profile')
+            .expect(200)
+        assert.strictEqual(undefined, res0.body.defaultTimezone)
+
+        const res = await request(server)
+            .patch('/proxy-bar/api/profile')
+            .send({ defaultTimezone: 'UTC+8' })
+            .expect('Content-Type', /json/)
+            .expect(200)
+        assert.strictEqual('boolean', typeof res.body.enableComment)
+        assert.strictEqual('UTC+8', res.body.defaultTimezone)
+
+        const res2 = await request(server)
+            .get('/proxy-bar/api/profile')
+            .expect(200)
+        assert.strictEqual('UTC+8', res2.body.defaultTimezone)
+    })
+
 
     after(async () => {
         await server.close()

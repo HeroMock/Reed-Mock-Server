@@ -1,5 +1,6 @@
 {
     "port": "3000",
+    "timeout": 300,
     "serveStatic": {
         "enabled": true,
         "urlPrefix": "",
@@ -21,12 +22,12 @@
         "enabled": true,
         "endpoints": [
             {
-                "endpoint": "/proxy-get",
-                "target": "http://httpbin.org/get"
+                "endpoint": "/proxy-foo",
+                "target": "http://localhost:2999/api/"
             },
             {
-                "endpoint": "/proxy-post",
-                "target": "http://httpbin.org/post",
+                "endpoint": "/proxy-bar",
+                "target": "http://localhost:2999",
                 "options": {}
             }
         ],

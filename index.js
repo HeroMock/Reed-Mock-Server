@@ -15,12 +15,12 @@ const httpPort = Number(process.env.PORT || Config.port)
  * Create HTTP server with KOA
  * @return {http.Server}
  */
-function startServer() {
+function startServer(port) {
     const app = new Koa()
     setupMiddleware(app)
 
-    const server = app.listen(httpPort)
-    server.timeout = 5 * 60 * 1000
+    const server = app.listen(port || httpPort)
+    server.timeout = (Number(Config.timeout) || 5 * 60) * 1000
     server.on('listening', onListening)
     server.on('error', onError)
     // server.on('close', () => process.exit(0))
