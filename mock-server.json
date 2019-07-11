@@ -21,12 +21,12 @@
         "enabled": true,
         "endpoints": [
             {
-                "endpoint": "/proxy-foo",
+                "endpoint": "/proxy-get",
                 "target": "http://httpbin.org/get"
             },
             {
-                "endpoint": "/proxy-bar",
-                "target": "",
+                "endpoint": "/proxy-post",
+                "target": "http://httpbin.org/post",
                 "options": {}
             }
         ],
