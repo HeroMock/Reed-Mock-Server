@@ -36,7 +36,7 @@ describe('HTTP Transparent Proxy', () => {
     })
 
 
-    it('3. Proxy PATCH ', async () => {
+    it('3. Proxy PATCH', async () => {
         const res0 = await request(server)
             .get('/proxy-bar/api/profile')
             .expect(200)
