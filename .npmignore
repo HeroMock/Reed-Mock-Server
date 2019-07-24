@@ -1,0 +1,5 @@
+**/*.test.js
+**/test.js
+test/
+.vscode/
+.eslintrc.jsonr
