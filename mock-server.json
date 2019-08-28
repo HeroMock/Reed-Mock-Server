@@ -16,7 +16,21 @@
         "filePath": "./json-api.hbs"
     },
     "serveWebsocket": {
-        "enabled": true
+        "enabled": true,
+        "endpoints": [
+            {
+                "endpoint": "/ws1",
+                "filePath": "./json-ws1.hbs",
+                "type": "timer",
+                "interval": "500"
+            },
+            {
+                "endpoint": "/ws2",
+                "filePath": "./json-ws2.hbs",
+                "type": "fileWatcher"
+            }
+        ],
+        "options": {}
     },
     "serveProxy": {
         "enabled": true,
