@@ -8,7 +8,7 @@ process.env.NODE_ENV = 'test'
 
 const app = require('../index')
 
-describe('HTTP Transparent Proxy', () => {
+describe('Websocket', () => {
     const port = 3456;
     let server, client1, client2
 
@@ -50,7 +50,7 @@ describe('HTTP Transparent Proxy', () => {
             count++
             console.log(data)
         })
-        await promisify(fs.utimes)('../json-ws2.hbs', Date.now(), Date.now())
+        await promisify(fs.utimes)('./json-ws2.hbs', Date.now(), Date.now())
 
         assert.strictEqual(isOpened, true)
         assert.strictEqual(count, 1)
