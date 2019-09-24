@@ -1,8 +1,12 @@
 {
-    "feedbacks": {
-        "id": {{int 1000 2000}},
-        "comment": "{{lorem 100}}",
-        "userId": {{int 0 100}},
-        "timestamp": "{{date '2010' '2020' 'YYYYMMDD'}} {{time '06:00' '22:00' 'hh:mm:ss'}}"
-    }
+    "feedbacks": [
+        {{#repeat 5}}
+        {
+            "id": {{int 1000 2000}},
+            "comment": "{{lorem 100}}",
+            "userId": {{int 0 100}},
+            "timestamp": "{{date '2010' '2020' 'YYYYMMDD'}} {{time '06:00' '22:00' 'hh:mm:ss'}}"
+        }
+        {{/repeat}}
+    ]
 }
