@@ -10,19 +10,19 @@ const app = require('../index')
 
 describe('Websocket', () => {
     const port = 3456;
-    let server, client1, client2
+    let server
 
     before(() => {
         server = app.startServer(port)
     })
 
     beforeEach('start another server', () => {
-        client1 = new ws(`ws://localhost:${port}/ws1`)
-        client2 = new ws(`ws://localhost:${port}/ws2`)
     })
 
     it('1. WS Get msg regularly', async () => {
-        let isOpened
+        let isOpened,
+            client1 = new ws(`ws://localhost:${port}/ws1`)
+
         client1.on('open', () => {
             isOpened = true;
         })
@@ -30,7 +30,7 @@ describe('Websocket', () => {
         let count = 0
         client1.on('message', data => {
             count++
-            console.log(data)
+            // console.log(data)
         })
 
         await new Promise(resolve => setTimeout(resolve, 1100))
@@ -42,24 +42,25 @@ describe('Websocket', () => {
     })
 
     it('2. WS Get by file changed', async () => {
-        let isOpened
-        client1.on('open', () => {
+        let isOpened,
+            client2 = new ws(`ws://localhost:${port}/ws2`)
+
+        client2.on('open', () => {
             isOpened = true;
         })
 
         let count = 0
         client2.on('message', data => {
             count++
-            console.log(data)
+            // console.log(data)
         })
 
-        await new Promise(resolve => setTimeout(() => {
-            fs.utimesSync('./json-ws2.hbs', new Date(), new Date())
-            resolve()
-        }, 500))
+        await new Promise(resolve => fs.utimes('./json-ws2.hbs', new Date(), new Date(), () => setTimeout(resolve, 500)))
 
         assert.strictEqual(isOpened, true)
         assert.strictEqual(count, 1)
+
+        client2.close()
     })
 
 
