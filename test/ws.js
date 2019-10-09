@@ -37,6 +37,8 @@ describe('Websocket', () => {
 
         assert.strictEqual(isOpened, true)
         assert.strictEqual(count, 2)
+
+        client1.close()
     })
 
     it('2. WS Get by file changed', async () => {
@@ -50,7 +52,11 @@ describe('Websocket', () => {
             count++
             console.log(data)
         })
-        await promisify(fs.utimes)('./json-ws2.hbs', Date.now(), Date.now())
+
+        await new Promise(resolve => setTimeout(() => {
+            fs.utimesSync('./json-ws2.hbs', new Date(), new Date())
+            resolve()
+        }, 500))
 
         assert.strictEqual(isOpened, true)
         assert.strictEqual(count, 1)
