@@ -23,18 +23,18 @@
   "license": "MIT",
   "devDependencies": {
     "mocha": "^5.2.0",
-    "supertest": "^3.4.2"
+    "supertest": "^3.4.2",
+    "ws": "^7.1.2"
   },
   "dependencies": {
     "@koa/cors": "^2.2.3",
     "commander": "^2.20.0",
-    "dummy-json": "^2.0.0",
     "http-proxy": "^1.17.0",
     "koa": "^2.7.0",
     "koa-body": "^4.1.0",
     "koa-router": "^7.4.0",
     "koa-sendfile": "^2.0.1",
-    "reed-koa-websocket": "^1.0.0",
-    "ws": "^7.1.2"
+    "reed-json-api": "^1.0.0",
+    "reed-koa-websocket": "^1.0.0"
   }
 }
