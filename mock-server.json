@@ -3,12 +3,16 @@
     "timeout": 300,
     "serveStatic": {
         "enabled": true,
-        "urlPrefix": "",
-        "indexPage": [
-            "index.html",
-            "index.htm"
-        ],
-        "dirPath": "./static"
+        "endpoints": [
+            {
+                "urlPrefix": "",
+                "indexPages": [
+                    "index.html",
+                    "index.htm"
+                ],
+                "dirPath": "./static"
+            }
+        ]        
     },
     "serveApi": {
         "enabled": true,
