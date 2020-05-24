@@ -18,7 +18,7 @@
         "enabled": true,
         "endpoints": [
             {
-                "urlPrefix": "/api",
+                "endpoint": "/api",
                 "filePath": "./json-api.hbs",
                 "options": {}
             }
