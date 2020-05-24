@@ -14,6 +14,12 @@ program
 
 program
     .command('start [config]')
+    .option('-p, --port <port>', 'Set port, default: 3000')
+    .option('-s, --static <staticDir>', 'Set static files directory, default: ./static')
+    .option('--no-serve-static', 'Disable static server')
+    .option('--no-serve-api', 'Disable api server')
+    .option('--no-serve-ws', 'Disable webscoket server')
+    .option('--no-serve-proxy', 'Disable proxy server')
     .description('start mock server')
     .action(startServer)
 
@@ -31,8 +37,15 @@ function initServer() {
     })
 }
 
-function startServer(config) {
+function startServer(config, cmd) {
     process.env.MockConfig = config || ''
+    const Config = require('../lib/config')
+    Config.port = cmd.port || Config.port
+    Config.serveStatic.dirPath = cmd.static || Config.serveStatic.dirPath
+    Config.serveStatic.enabled = cmd.serveStatic
+    Config.serveApi.enabled = cmd.serveApi
+    Config.serveWebsocket.enabled = cmd.serveWs
+    Config.serveProxy.enabled = cmd.serveProxy
     require('../index').startServer()
 }
 
