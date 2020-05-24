@@ -59,5 +59,8 @@
     "customMiddleware": {
         "front": [],
         "last": []
+    },
+    "portal": {
+        "port": 3001
     }
 }
