@@ -1,6 +1,7 @@
 const request = require('supertest')
 
 process.env.NODE_ENV = 'test'
+process.env.EnablePortal = ''
 
 const app = require('../index')
 
@@ -10,7 +11,7 @@ describe('Restful API DELETE', () => {
     beforeEach(() => {
         server = app.startServer()
     })
-    
+
     it('1. DELETE with non-existed entity', () => {
         return request(server)
             .delete('/api/some-entity')

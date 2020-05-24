@@ -1,6 +1,7 @@
 const request = require('supertest')
 
 process.env.NODE_ENV = 'test'
+process.env.EnablePortal = ''
 
 const app = require('../index')
 
