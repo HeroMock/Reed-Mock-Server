@@ -1,8 +1,11 @@
 # Reed Mock Server
+
+Full feature mock server.
+
 1. Restful API Mock
-2. Existing API Transparent Proxy
-3. Websocket Mock (TBD)
-4. Static File Service
+2. Transparent HTTP Proxy
+3. Websocket Mock
+4. Static File Serve
 
 
 ## How to use
@@ -10,10 +13,10 @@
 ```sh
 npm i -D reed-mock-server
 
-reed-mock init
+imock init
 
 # after customized the 'mock-server.json', 'json-api.hbs'
-reed-mock start
+imock start
 ```
 
 
