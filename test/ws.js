@@ -1,15 +1,13 @@
-const http = require('http'),
-    assert = require('assert'),
-    ws = require('ws'),
-    fs = require('fs'),
-    { promisify } = require('util')
+const assert = require('assert'),
+    ws = require('ws')
 
 process.env.NODE_ENV = 'test'
+process.env.EnablePortal = ''
 
 const app = require('../index')
 
 describe('Websocket', () => {
-    const port = 3456;
+    const port = 3456
     let server
 
     before(() => {
@@ -24,7 +22,7 @@ describe('Websocket', () => {
             client1 = new ws(`ws://localhost:${port}/ws1`)
 
         client1.on('open', () => {
-            isOpened = true;
+            isOpened = true
         })
 
         let count = 0
@@ -46,7 +44,7 @@ describe('Websocket', () => {
             client2 = new ws(`ws://localhost:${port}/ws2`)
 
         client2.on('open', () => {
-            isOpened = true;
+            isOpened = true
         })
 
         // let count = 0
