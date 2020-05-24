@@ -1,13 +1,13 @@
-const http = require('http'),
-    request = require('supertest'),
+const request = require('supertest'),
     assert = require('assert')
 
 process.env.NODE_ENV = 'test'
+process.env.EnablePortal = ''
 
 const app = require('../index')
 
 describe('HTTP Transparent Proxy', () => {
-    let server, remoteServer, remoteReq
+    let server, remoteServer
 
     before(() => {
         server = app.startServer()
@@ -28,10 +28,10 @@ describe('HTTP Transparent Proxy', () => {
     })
 
     it('2. Proxy Get with query & parameter', async () => {
-        const res =  await request(server)
+        const res = await request(server)
             .get('/proxy-foo/users?_page=1&_size=20')
             .expect(200)
-        
+
         assert.strictEqual(res.body.length, 20)
     })
 
