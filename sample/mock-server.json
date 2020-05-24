@@ -10,7 +10,7 @@
           "index.html",
           "index.htm"
         ],
-        "dirPath": "./static"
+        "dirPath": "./sample/static"
       }
     ]
   },
@@ -20,7 +20,7 @@
       {
         "name": "api1",
         "endpoint": "/api",
-        "filePath": "./templates/json-api.hbs",
+        "filePath": "./sample/templates/json-api.hbs",
         "options": {}
       }
     ]
@@ -30,13 +30,13 @@
     "endpoints": [
       {
         "endpoint": "/ws1",
-        "filePath": "./templates/json-ws1.hbs",
+        "filePath": "./sample/templates/json-ws1.hbs",
         "type": "timer",
         "interval": "500"
       },
       {
         "endpoint": "/ws2",
-        "filePath": "./templates/json-ws2.hbs",
+        "filePath": "./sample/templates/json-ws2.hbs",
         "type": "fileWatcher"
       }
     ],
@@ -61,7 +61,7 @@
     "front": [],
     "last": []
   },
-  "admin": {
-    "urlPrefix": "/admin"
+  "protal": {
+    "port": 3001
   }
 }
