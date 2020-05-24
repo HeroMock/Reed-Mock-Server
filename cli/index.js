@@ -20,6 +20,7 @@ program
     .option('--no-serve-api', 'Disable api server')
     .option('--no-serve-ws', 'Disable webscoket server')
     .option('--no-serve-proxy', 'Disable proxy server')
+    .option('--nc, --no-cors', 'Disable Cross-Origin Resource Sharing')
     .description('start mock server')
     .action(startServer)
 
@@ -40,7 +41,8 @@ function initServer() {
 function startServer(config, cmd) {
     process.env.MockConfig = config || ''
     const Config = require('../lib/config')
-    Config.port = cmd.port || Config.port
+    cmd.port && (Config.port = +cmd.port)
+    Config.cors = cmd.cors
     Config.serveStatic.dirPath = cmd.static || Config.serveStatic.dirPath
     Config.serveStatic.enabled = cmd.serveStatic
     Config.serveApi.enabled = cmd.serveApi
