@@ -7,9 +7,10 @@
     "imock": "./cli/index.js"
   },
   "scripts": {
-    "test": "mocha",
+    "test": "set MockConfig=./sample/mock-server.json && mocha",
     "eslint": "eslint . --fix",
-    "dev": "node index.js"
+    "dev": "set MockConfig=./sample/mock-server.json && node index.js",
+    "debug:cli": "node ./cli/index.js start"
   },
   "keywords": [
     "mock",

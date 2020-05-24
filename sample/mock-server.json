@@ -1,0 +1,67 @@
+{
+  "port": "3000",
+  "timeout": 300,
+  "serveStatic": {
+    "enabled": true,
+    "endpoints": [
+      {
+        "endpoint": "",
+        "indexPages": [
+          "index.html",
+          "index.htm"
+        ],
+        "dirPath": "./sample/static"
+      }
+    ]
+  },
+  "serveApi": {
+    "enabled": true,
+    "endpoints": [
+      {
+        "name": "api1",
+        "endpoint": "/api",
+        "filePath": "./sample/templates/json-api.hbs",
+        "options": {}
+      }
+    ]
+  },
+  "serveWebsocket": {
+    "enabled": true,
+    "endpoints": [
+      {
+        "endpoint": "/ws1",
+        "filePath": "./sample/templates/json-ws1.hbs",
+        "type": "timer",
+        "interval": "500"
+      },
+      {
+        "endpoint": "/ws2",
+        "filePath": "./sample/templates/json-ws2.hbs",
+        "type": "fileWatcher"
+      }
+    ],
+    "options": {}
+  },
+  "serveProxy": {
+    "enabled": true,
+    "endpoints": [
+      {
+        "endpoint": "/proxy-foo",
+        "target": "http://localhost:2999/api/"
+      },
+      {
+        "endpoint": "/proxy-bar",
+        "target": "http://localhost:2999",
+        "options": {}
+      }
+    ],
+    "options": {}
+  },
+  "customMiddleware": {
+    "front": [],
+    "last": []
+  },
+  "portal": {
+    "port": 3001
+  }
+}
