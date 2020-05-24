@@ -1,66 +1,67 @@
 {
-    "port": "3000",
-    "timeout": 300,
-    "serveStatic": {
-        "enabled": true,
-        "endpoints": [
-            {
-                "urlPrefix": "",
-                "indexPages": [
-                    "index.html",
-                    "index.htm"
-                ],
-                "dirPath": "./static"
-            }
-        ]
-    },
-    "serveApi": {
-        "enabled": true,
-        "endpoints": [
-            {
-                "endpoint": "/api",
-                "filePath": "./json-api.hbs",
-                "options": {}
-            }
-        ]
-    },
-    "serveWebsocket": {
-        "enabled": true,
-        "endpoints": [
-            {
-                "endpoint": "/ws1",
-                "filePath": "./json-ws1.hbs",
-                "type": "timer",
-                "interval": "500"
-            },
-            {
-                "endpoint": "/ws2",
-                "filePath": "./json-ws2.hbs",
-                "type": "fileWatcher"
-            }
+  "port": "3000",
+  "timeout": 300,
+  "serveStatic": {
+    "enabled": true,
+    "endpoints": [
+      {
+        "urlPrefix": "",
+        "indexPages": [
+          "index.html",
+          "index.htm"
         ],
+        "dirPath": "./static"
+      }
+    ]
+  },
+  "serveApi": {
+    "enabled": true,
+    "endpoints": [
+      {
+        "name": "api1",
+        "endpoint": "/api",
+        "filePath": "./templates/json-api.hbs",
         "options": {}
-    },
-    "serveProxy": {
-        "enabled": true,
-        "endpoints": [
-            {
-                "endpoint": "/proxy-foo",
-                "target": "http://localhost:2999/api/"
-            },
-            {
-                "endpoint": "/proxy-bar",
-                "target": "http://localhost:2999",
-                "options": {}
-            }
-        ],
+      }
+    ]
+  },
+  "serveWebsocket": {
+    "enabled": true,
+    "endpoints": [
+      {
+        "endpoint": "/ws1",
+        "filePath": "./templates/json-ws1.hbs",
+        "type": "timer",
+        "interval": "500"
+      },
+      {
+        "endpoint": "/ws2",
+        "filePath": "./templates/json-ws2.hbs",
+        "type": "fileWatcher"
+      }
+    ],
+    "options": {}
+  },
+  "serveProxy": {
+    "enabled": true,
+    "endpoints": [
+      {
+        "endpoint": "/proxy-foo",
+        "target": "http://localhost:2999/api/"
+      },
+      {
+        "endpoint": "/proxy-bar",
+        "target": "http://localhost:2999",
         "options": {}
-    },
-    "customMiddleware": {
-        "front": [],
-        "last": []
-    },
-    "admin": {
-        "urlPrefix": "/admin"
-    }
+      }
+    ],
+    "options": {}
+  },
+  "customMiddleware": {
+    "front": [],
+    "last": []
+  },
+  "admin": {
+    "urlPrefix": "/admin"
+  }
 }
