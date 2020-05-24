@@ -14,12 +14,16 @@ program
 
 program
     .command('start [config]')
-    .option('-p, --port <port>', 'Set port, default: 3000')
-    .option('-s, --static <staticDir>', 'Set static files directory, default: ./static')
-    .option('--no-serve-static', 'Disable static server')
-    .option('--no-serve-api', 'Disable api server')
-    .option('--no-serve-ws', 'Disable webscoket server')
-    .option('--no-serve-proxy', 'Disable proxy server')
+    .option('-p, --port <port>', 'Set port, default: 3000', 3000)
+    .option('-s, --static-endpoint <path>', 'Set static server endpoint')
+    .option('--static-dir <dir>', 'Set static files directory', './dist')
+    
+    .option('--api, --api-endpoint <path>', 'Set api endpoint')
+    .option('--api-data-path <dir>', 'Set api data config\'s path', './json-api.hbs')
+    
+    .option('--ws, --ws-endpoint <path>', 'Set Websocket webpoint')
+    .option('--ws-data-path <dir>', 'Set Websocket data config\'s path', './json-ws.hbs')
+
     .option('--nc, --no-cors', 'Disable Cross-Origin Resource Sharing')
     .description('start mock server')
     .action(startServer)
@@ -39,16 +43,59 @@ function initServer() {
 }
 
 function startServer(config, cmd) {
+    parseArgv(config, cmd)
+    require('../index').startServer()
+}
+
+function parseArgv(config, cmd) {
     process.env.MockConfig = config || ''
     const Config = require('../lib/config')
-    cmd.port && (Config.port = +cmd.port)
     Config.cors = cmd.cors
-    Config.serveStatic.dirPath = cmd.static || Config.serveStatic.dirPath
-    Config.serveStatic.enabled = cmd.serveStatic
-    Config.serveApi.enabled = cmd.serveApi
-    Config.serveWebsocket.enabled = cmd.serveWs
-    Config.serveProxy.enabled = cmd.serveProxy
-    require('../index').startServer()
+    if (!config) {
+        cmd.port && (Config.port = +cmd.port)
+        if (cmd.staticEndpoint) {
+            Config.serveStatic = {
+                enabled: true,
+                endpoints: [
+                    {
+                        urlPrefix: cmd.staticEndpoint,
+                        indexPages: [
+                            "index.html",
+                            "index.htm"
+                        ],
+                        dirPath: cmd.staticDir
+                    }
+                ]
+            }
+
+        }
+        if (cmd.apiEndpoint) {
+            Config.serveApi = {
+                enabled: true,
+                endpoints: [
+                    {
+                        endpoint: cmd.apiEndpoint,
+                        filePath: cmd.apiDataPath,
+                        options: {}
+                    }
+                ]
+            }
+
+        }
+        if (cmd.wsEndpoint) {
+            Config.serveWebsocket = {
+                enabled: true,
+                endpoints: [
+                    {
+                        endpoint: cmd.wsEndpoint,
+                        filePath: cmd.wsDataPath,
+                        options: {}
+                    }
+                ]
+            }
+
+        }
+    }
 }
 
 function wrap(msg, ...keys) {
