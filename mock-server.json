@@ -16,7 +16,7 @@
     },
     "serveApi": {
         "enabled": true,
-        "urlPrefix": "/api",
+        "urlPrefix": "/svc",
         "filePath": "./json-api.hbs"
     },
     "serveWebsocket": {
@@ -54,5 +54,8 @@
     "customMiddleware": {
         "front": [],
         "last": []
+    },
+    "admin": {
+        "urlPrefix": "/admin"
     }
 }
