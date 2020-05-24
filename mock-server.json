@@ -12,12 +12,17 @@
                 ],
                 "dirPath": "./static"
             }
-        ]        
+        ]
     },
     "serveApi": {
         "enabled": true,
-        "urlPrefix": "/api",
-        "filePath": "./json-api.hbs"
+        "endpoints": [
+            {
+                "endpoint": "/api",
+                "filePath": "./json-api.hbs",
+                "options": {}
+            }
+        ]
     },
     "serveWebsocket": {
         "enabled": true,
