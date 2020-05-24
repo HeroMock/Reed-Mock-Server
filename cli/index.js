@@ -14,13 +14,14 @@ program
 
 program
     .command('start [config]')
-    .option('-p, --port <port>', 'Set port, default: 3000', 3000)
+    .option('-p, --port <port>', 'Set port', 3000)
+    .option('-P, --portal-port <port>', 'Set portal port', 3001)
     .option('-s, --static-endpoint <path>', 'Set static server endpoint')
     .option('--static-dir <dir>', 'Set static files directory', './dist')
-    
+
     .option('--api, --api-endpoint <path>', 'Set api endpoint')
     .option('--api-data-path <dir>', 'Set api data config\'s path', './json-api.hbs')
-    
+
     .option('--ws, --ws-endpoint <path>', 'Set Websocket webpoint')
     .option('--ws-data-path <dir>', 'Set Websocket data config\'s path', './json-ws.hbs')
 
@@ -51,6 +52,8 @@ function parseArgv(config, cmd) {
     process.env.MockConfig = config || ''
     const Config = require('../lib/config')
     Config.cors = cmd.cors
+    Config.portal = Config.portal || {}
+    Config.portal.port = cmd.portalPort
     if (!config) {
         cmd.port && (Config.port = +cmd.port)
         if (cmd.staticEndpoint) {
