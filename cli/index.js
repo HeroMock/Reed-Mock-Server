@@ -58,7 +58,7 @@ function parseArgv(config, cmd) {
                 enabled: true,
                 endpoints: [
                     {
-                        urlPrefix: cmd.staticEndpoint,
+                        endpoint: cmd.staticEndpoint,
                         indexPages: [
                             "index.html",
                             "index.htm"
