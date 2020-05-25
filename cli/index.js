@@ -39,21 +39,23 @@ function initServer() {
 
     [
         ['serveApi', ['json-api.hbs']],
-        ['serveWebsocket', ['json-ws1.hbs', 'json-ws1.hbs']]
+        ['serveWebsocket', ['json-ws1.hbs', 'json-ws2.hbs']]
     ].forEach(([node, confs]) => {
         serverConfig[node].endpoints.forEach((ep, index) => {
             ep.filePath = confs[index]
         })
-        confs.forEach( f => {
+        confs.forEach(f => {
             fs.copyFile(
                 path.join(__dirname, '../sample/templates', f),
                 path.join(process.cwd(), f),
-                e => e ? console.error(e.message) : console.log(`[Reed Mock] server ${wrap(f, 'green', 'bold', 'italic')} initialized`)
+                e => e ? console.error(e.message) : console.log(`[Reed Mock] template ${wrap(f, 'green', 'bold', 'italic')} initialized`)
             )
         })
     })
 
+    serverConfig.serveStatic.endpoints.forEach(s=> s.dirPath = './dist')
     fs.writeFileSync(path.join(process.cwd(), configFile), JSON.stringify(serverConfig, null, 2))
+    console.log(`[Reed Mock] config ${wrap(configFile, 'green', 'bold', 'italic')} initialized`)
 }
 
 function startServer(config, cmd) {

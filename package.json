@@ -1,6 +1,6 @@
 {
   "name": "reed-mock-server",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "description": "node.js mock server",
   "main": "index.js",
   "bin": {
