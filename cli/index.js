@@ -34,10 +34,10 @@ program
 
 
 function initServer() {
-    ['mock-server.json', 'json-api.hbs'].forEach(s => {
+    ['./sample/mock-server.json', './sample/templates/json-api.hbs'].forEach(s => {
         fs.copyFile(
             path.join(__dirname, '..', s),
-            path.join(process.cwd(), s),
+            path.join(process.cwd(), path.basename(s)),
             e => e ? console.error(e.message) : console.log(`[Reed Mock] server ${wrap(s, 'green', 'bold', 'italic')} initialized`)
         )
     })
