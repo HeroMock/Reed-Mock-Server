@@ -34,13 +34,26 @@ program
 
 
 function initServer() {
-    ['mock-server.json', 'json-api.hbs'].forEach(s => {
-        fs.copyFile(
-            path.join(__dirname, '..', s),
-            path.join(process.cwd(), s),
-            e => e ? console.error(e.message) : console.log(`[Reed Mock] server ${wrap(s, 'green', 'bold', 'italic')} initialized`)
-        )
+    const configFile = 'mock-server.json'
+    const serverConfig = require(path.join('../sample', configFile));
+
+    [
+        ['serveApi', ['json-api.hbs']],
+        ['serveWebsocket', ['json-ws1.hbs', 'json-ws1.hbs']]
+    ].forEach(([node, confs]) => {
+        serverConfig[node].endpoints.forEach((ep, index) => {
+            ep.filePath = confs[index]
+        })
+        confs.forEach( f => {
+            fs.copyFile(
+                path.join(__dirname, '../sample/templates', f),
+                path.join(process.cwd(), f),
+                e => e ? console.error(e.message) : console.log(`[Reed Mock] server ${wrap(f, 'green', 'bold', 'italic')} initialized`)
+            )
+        })
     })
+
+    fs.writeFileSync(path.join(process.cwd(), configFile), JSON.stringify(serverConfig, null, 2))
 }
 
 function startServer(config, cmd) {
