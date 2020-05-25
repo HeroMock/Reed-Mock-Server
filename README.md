@@ -11,7 +11,7 @@ Full feature mock server.
 ## How to use
 
 ```sh
-npm i -D reed-mock-server
+npm i -g reed-mock-server
 
 imock init
 
@@ -24,7 +24,7 @@ imock start
 ```sh
 imock start -p 3000 -s "/" --static-dir "./dist" --api "/api" --api-data-path "./json-data.hbs" --ws-endpoint "/ws" --ws-data-path "./json-ws.hbs"
 
-imock start --config "mock-server.json"
+imock start "mock-server.json"
 
 ```
 
