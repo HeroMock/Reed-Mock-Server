@@ -1,11 +1,12 @@
 {
   "port": "3000",
   "timeout": 300,
+  "cors": true,
   "serveStatic": {
     "enabled": true,
     "endpoints": [
       {
-        "urlPrefix": "",
+        "endpoint": "",
         "indexPages": [
           "index.html",
           "index.htm"
