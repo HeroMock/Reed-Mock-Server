@@ -68,6 +68,7 @@ function parseArgv(config, cmd) {
     Config.portal = Config.portal || {}
     Config.portal.port = cmd.portalPort
     if (!config) {
+        process.env.MockConfig = path.join(process.cwd(), 'mock-server.json')
         cmd.port && (Config.port = +cmd.port)
         if (cmd.staticEndpoint) {
             Config.serveStatic = {
