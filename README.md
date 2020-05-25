@@ -16,7 +16,7 @@ npm i -g reed-mock-server
 imock init
 
 # after customized the 'mock-server.json', 'json-api.hbs'
-imock start
+imock start mock-server.json
 ```
 
 ## CLI
@@ -24,7 +24,23 @@ imock start
 ```sh
 imock start -p 3000 -s "/" --static-dir "./dist" --api "/api" --api-data-path "./json-data.hbs" --ws-endpoint "/ws" --ws-data-path "./json-ws.hbs"
 
-imock start "mock-server.json"
+
+imock start -h
+# Usage: start [options] [config]
+# 
+# start mock server
+# 
+# Options:
+#   -p, --port <port>             Set port (default: 3000)
+#   -P, --portal-port <port>      Set portal port (default: 3001)
+#   -s, --static-endpoint <path>  Set static server endpoint
+#   --static-dir <dir>            Set static files directory (default: "./dist")
+#   --api, --api-endpoint <path>  Set api endpoint
+#   --api-data-path <dir>         Set api data config's path (default: "./json-api.hbs")
+#   --ws, --ws-endpoint <path>    Set Websocket webpoint
+#   --ws-data-path <dir>          Set Websocket data config's path (default: "./json-ws.hbs")
+#   --nc, --no-cors               Disable Cross-Origin Resource Sharing
+#   -h, --help                    output usage information
 
 ```
 
