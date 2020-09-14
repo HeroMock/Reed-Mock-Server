@@ -20,7 +20,7 @@ var portalApp
  * @return {http.Server}
  */
 function startServer(port) {
-    process.env.EnablePortal && (portalApp = portal())
+    Config.portal && Config.portal.enabled && (portalApp = portal())
     httpPort = port || httpPort
     return run(httpPort)
 }
