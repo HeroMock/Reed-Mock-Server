@@ -1,6 +1,6 @@
 {
   "name": "reed-mock-server",
-  "version": "0.0.9",
+  "version": "0.1.0",
   "description": "node.js mock server",
   "main": "index.js",
   "bin": {
@@ -23,20 +23,20 @@
   "author": "HansHuang",
   "license": "MIT",
   "devDependencies": {
-    "mocha": "^5.2.0",
-    "supertest": "^3.4.2",
-    "ws": "^7.1.2"
+    "mocha": "^11.1.0",
+    "supertest": "^7.1.0",
+    "ws": "^8.18.1"
   },
   "dependencies": {
-    "@koa/cors": "^2.2.3",
-    "commander": "^2.20.0",
+    "@koa/cors": "^5.0.0",
+    "commander": "^13.1.0",
     "cross-env": "^7.0.2",
     "http-proxy": "^1.18.1",
-    "koa": "^2.7.0",
-    "koa-body": "^4.1.0",
-    "koa-router": "^7.4.0",
-    "reed-json-api": "^1.0.1",
-    "reed-koa-static": "^1.0.0",
-    "reed-koa-websocket": "^1.0.0"
+    "koa": "^2.16.0",
+    "koa-body": "^6.0.1",
+    "koa-router": "^13.0.1",
+    "reed-json-api": "^1.0.2",
+    "reed-koa-static": "^1.0.2",
+    "reed-koa-websocket": "^1.0.2"
   }
 }
