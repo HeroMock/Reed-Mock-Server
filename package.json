@@ -1,6 +1,6 @@
 {
   "name": "reed-mock-server",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "node.js mock server",
   "main": "index.js",
   "bin": {
@@ -10,7 +10,7 @@
     "test": "cross-env MockConfig=./sample/mock-server.json mocha",
     "eslint": "eslint . --fix",
     "dev": "cross-env MockConfig=./sample/mock-server.json node index.js",
-    "debug:cli": "node ./cli/index.js start"
+    "debug:cli": "node ./cli/index.js"
   },
   "keywords": [
     "mock",
