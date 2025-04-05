@@ -30,8 +30,8 @@ importers:
         specifier: ^13.0.1
         version: 13.0.1
       reed-json-api:
-        specifier: ^1.0.2
-        version: 1.0.2
+        specifier: ^1.0.3
+        version: 1.0.3
       reed-koa-static:
         specifier: ^1.0.2
         version: 1.0.2
@@ -718,8 +718,8 @@ packages:
     resolution: {integrity: sha512-hOS089on8RduqdbhvQ5Z37A0ESjsqz6qnRcffsMU3495FuTdqSm+7bhJ29JvIOsBDEEnan5DPu9t3To9VRlMzA==}
     engines: {node: '>=8.10.0'}
 
-  reed-json-api@1.0.2:
-    resolution: {integrity: sha512-DwKfFmF+D2hJfzSkQQO1owHYwD3mNKi1kPyVixZIsIW40S/o1ZK9WYX5SMwPZlfsgcWi7sdTs7IDZYVSK6GLLA==}
+  reed-json-api@1.0.3:
+    resolution: {integrity: sha512-gd4DjDi1tpN4r616ro51+PDKptNp/7rPMvPMZNbu1Okkl/tacfwuzppehv4XYKsuEHskwhLpBrEx8duEjM8u2w==}
 
   reed-koa-static@1.0.2:
     resolution: {integrity: sha512-s8Augy/TUNWV3uE8Ar6yAsgtvlsqeXf9HLRwZE1WxILQDuIPvAgDv0P6I5c3tqRpSJaojaD0nb9W8kLYE+1cYg==}
@@ -1631,7 +1631,7 @@ snapshots:
     dependencies:
       picomatch: 2.3.1
 
-  reed-json-api@1.0.2:
+  reed-json-api@1.0.3:
     dependencies:
       debug: 4.4.0(supports-color@8.1.1)
       dummy-json: 3.0.5
