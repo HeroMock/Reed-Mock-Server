@@ -36,7 +36,7 @@
     "koa-body": "^6.0.1",
     "koa-router": "^13.0.1",
     "reed-json-api": "^1.0.5",
-    "reed-koa-static": "^1.0.2",
+    "reed-koa-static": "^1.0.3",
     "reed-koa-websocket": "^1.0.2"
   }
 }
